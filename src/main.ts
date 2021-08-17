@@ -1,12 +1,12 @@
 import express from 'express'
 import { Server, Socket } from 'socket.io'
-import { config } from 'dotenv'
 
+import { config } from 'dotenv'
 import { createServer } from 'http'
 
 config()
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 const app = express()
 const httpServer = createServer(app)
