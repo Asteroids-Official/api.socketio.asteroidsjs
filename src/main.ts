@@ -70,9 +70,11 @@ io.on('connection', (socket: Socket) => {
    * @param player - The player that will receive the update.
    */
   function updatePlayer(room: string, player: Player): void {
-    rooms[room][player.id] = player
+    if (rooms[room]) {
+      rooms[room][player.id] = player
 
-    io.to(room).emit('update-game', rooms[room])
+      io.to(room).emit('update-game', rooms[room])
+    }
   }
   socket.on('update-player', updatePlayer)
 })
