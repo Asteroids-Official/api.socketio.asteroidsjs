@@ -16,10 +16,12 @@
   },
   "keywords": [
     "asteroids",
+    "asteroidsjs",
+    "game",
     "socket-io",
-    "javascript",
+    "typescript",
     "api",
-    "javascript"
+    "server"
   ],
   "dependencies": {
     "dotenv": "^10.0.0",
