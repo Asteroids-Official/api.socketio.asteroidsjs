@@ -134,9 +134,11 @@ io.on('connection', (socket: Socket): void => {
 
   /**
    * Called when a player disconnects from the room.
+   *
+   * @param reason The reason of the disconnection.
    */
-  function disconnect(): void {
-    console.log('Player disconnected: ' + socket.id)
+  function disconnect(reason: string): void {
+    console.log('Player disconnected: ' + socket.id + ' - ' + reason)
 
     const players: IPlayer[] = []
 
