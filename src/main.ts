@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { Server, Socket } from 'socket.io'
 
 import { config } from 'dotenv'
@@ -12,8 +13,10 @@ config()
 const port = process.env.PORT || 3001
 
 const app = express()
+app.use(cors())
+
 const httpServer = createServer(app)
-const io = new Server().listen(httpServer)
+const io = new Server({ cors: { origin: '*' } }).listen(httpServer)
 
 const rooms: IRoom[] = [
   {
