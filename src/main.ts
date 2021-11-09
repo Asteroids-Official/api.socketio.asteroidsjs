@@ -74,6 +74,16 @@ io.on('connection', (socket: Socket): void => {
   socket.on('list-rooms', listRooms)
 
   /**
+   * Instantiates a new player into the given room.
+   *
+   * @param data The data that contains the player, spaceship and room data.
+   */
+  function instantiate(data: { data: any; room: IRoom }): void {
+    io.to(data.room.room).emit(data.data)
+  }
+  socket.on('instantiate', instantiate)
+
+  /**
    * Connects a player to a room room.
    *
    * @param data The data containing the player and room information.
