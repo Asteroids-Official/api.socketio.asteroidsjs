@@ -88,9 +88,16 @@ io.on('connection', (socket: Socket): void => {
    *
    * @param data The data containing the player and room information.
    */
-  function playerConnection(data: ISocketPlayerData): void {
+  function playerConnection(data: {
+    player: IPlayer
+    room: IRoom
+    spaceship: unknown
+  }): void {
     socket.join(data.room.room)
-    io.to(data.room.room).emit('player-connected', data.player)
+    io.to(data.room.room).emit('player-connected', {
+      player: data.player,
+      spaceship: data.spaceship,
+    })
   }
   socket.on('player-connection', playerConnection)
 
